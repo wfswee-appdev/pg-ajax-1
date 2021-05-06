@@ -23,7 +23,7 @@ class CommentsController < ApplicationController
       format.html
     end
   end
-
+#
   # POST /comments or /comments.json
   def create
     @comment = Comment.new(comment_params)
