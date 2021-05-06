@@ -23,7 +23,7 @@ class CommentsController < ApplicationController
       format.html
     end
   end
-#
+
   # POST /comments or /comments.json
   def create
     @comment = Comment.new(comment_params)
@@ -59,6 +59,8 @@ class CommentsController < ApplicationController
     respond_to do |format|
       format.html { redirect_back fallback_location: root_url, notice: "Comment was successfully destroyed." }
       format.json { head :no_content }
+
+      format.js { render template: "comments/destroy.js.erb" }
     end
   end
 
