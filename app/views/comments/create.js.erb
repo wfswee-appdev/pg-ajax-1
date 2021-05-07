@@ -1,2 +1,13 @@
-console.log("howdy")
-console.log("<%= @comment.body %>")
+// var added_comment = $("<p><%= @comment.body %></p>");
+
+var added_comment = $("<%= j(render @comment) %>");
+
+// $("#<%= dom_id(@comment.photo) %>_new_comment_form").before("<%= @comment.body %>");
+
+// $("#<%= dom_id(@comment.photo) %>_new_comment_form").before("<li class=\"list-group-item\"><%= @comment.body %></li>");
+
+$("#<%= dom_id(@comment.photo) %>_new_comment_form").before(added_comment);
+
+// escape_javascript (j) will take care of all the illegal characters in javascript and prepare it for us
+
+$("#<%= dom_id(@comment.photo) %>_new_comment_form #comment_body").val("");
