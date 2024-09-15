@@ -33,6 +33,8 @@ class CommentsController < ApplicationController
       if @comment.save
         format.html { redirect_back fallback_location: root_path, notice: "Comment was successfully created." }
         format.json { render :show, status: :created, location: @comment }
+        format.js
+        # could do format.js { render "comments/create.js.erb" } but we are following the conventions where view folder matches template name, and template matches the action name, so we can drop the whole block and just use format.js
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @comment.errors, status: :unprocessable_entity }
